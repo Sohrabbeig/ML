@@ -31,25 +31,25 @@ def entropy(data, classes):
 def miss_classification(data, classes):
     return 1 - max(class_probabilities(data, classes), key=lambda item: item[1])[1]
 
-
-split1 = [[1, 2, 3, 1],
-          [1, 3, 2, 1],
-          [1, 3, 2, 1],
-          [2, 3, 1, 0],
-          [2, 3, 1, 0],
-          [2, 1, 3, 0]]
-
-split2 = [[1, 2, 3, 1],
-          [1, 3, 2, 1],
-          [2, 3, 1, 1],
-          [2, 1, 3, 1]]
-
-classes = {0, 1}
-
-print(miss_classification(split1, classes))
-print(entropy(split1, classes))
-print(gini_index(split1, classes))
-
-print(miss_classification(split2, classes))
-print(entropy(split2, classes))
-print(gini_index(split2, classes))
+#---------------testing impurity measures---------------
+# split1 = [[1, 2, 3, 1],
+#           [1, 3, 2, 1],
+#           [1, 3, 2, 1],
+#           [2, 3, 1, 0],
+#           [2, 3, 1, 0],
+#           [2, 1, 3, 0]]
+#
+# split2 = [[1, 2, 3, 1],
+#           [1, 3, 2, 1],
+#           [2, 3, 1, 1],
+#           [2, 1, 3, 1]]
+#
+# classes = {0, 1}
+#
+# print(miss_classification(split1, classes))
+# print(entropy(split1, classes))
+# print(gini_index(split1, classes))
+#
+# print(miss_classification(split2, classes))
+# print(entropy(split2, classes))
+# print(gini_index(split2, classes))
