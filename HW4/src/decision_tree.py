@@ -59,15 +59,17 @@ class Tree:
         def process(dataset, depth):
             if not is_pure(dataset) and len(dataset) > self.min_size and depth < self.max_depth:
                 best_split = get_split(dataset, self.impurity_measure)
-                current_node = Node(index=best_split['index'],
-                                    value=best_split['value'],
-                                    left=process(best_split['groups'][0], depth+1),
-                                    right=process(best_split['groups'][1], depth+1)
-                                    )
+                print()
+                print("  "*depth + "X{} < {}".format(best_split['index'], best_split["value"]))
+                current_node = Node(
+                                    index = best_split['index'],
+                                    value = best_split['value'],
+                                    left= process(best_split['groups'][0], depth+1),
+                                    right= process(best_split['groups'][1], depth+1))
             else:
                 current_node = Node()
                 outcomes = [row[-1] for row in dataset]
-                print(outcomes)
+                print("  "*depth + str(outcomes))
                 current_node.prediction = max(set(outcomes), key=outcomes.count)
 
             return current_node
