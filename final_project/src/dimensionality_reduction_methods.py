@@ -18,16 +18,17 @@ def PCA(X):
         return k
 
     cov_mat = np.cov(X)
-    eig_val_cov, eig_vec_cov = np.linalg.eig(cov_mat)
+    eig_val_cov, eig_vec_cov = np.linalg.eigh(cov_mat)
     eig_pairs = [(np.abs(eig_val_cov[i]), eig_vec_cov[:, i])
                  for i in range(len(eig_val_cov))]
     eig_pairs.sort(key=lambda x: x[0], reverse=True)
-    k = find_k(sorted(eig_val_cov, reverse=True))
+    # k = find_k(sorted(eig_val_cov, reverse=True))
+    k = 14
     selected_eig_vecs = [x[1].reshape(len(X), 1) for x in eig_pairs[:k]]
     matrix_w = np.hstack(selected_eig_vecs)
     transformed = matrix_w.T.dot(X)
 
-    return transformed
+    return transformed.T
 
 
 def LDA(X):
